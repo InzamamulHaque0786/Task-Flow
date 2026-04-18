@@ -10,22 +10,26 @@ import { getTenantConnection } from './utils/tenantDb.js';
 
 const app = express();
 const server = http.createServer(app);
+// Replace your current cors and io setup with this
+
+const FRONTEND_URL = process.env.FRONTEND_URL || 'https://your-vercel-frontend.vercel.app'; // Add this to Render environment variables
+
+app.use(
+  cors({
+    origin: FRONTEND_URL,           // Better than '*' in production
+    methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+    allowedHeaders: ['Content-Type', 'Authorization'],
+    credentials: true,              // Important if you use cookies/auth
+  })
+);
+
 const io = new Server(server, {
   cors: {
-    origin: '*',
+    origin: FRONTEND_URL,           // Must match exactly (no trailing slash usually)
     methods: ['GET', 'POST'],
     credentials: true,
   },
 });
-
-app.use(
-  cors({
-    origin: '*',
-    methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
-    allowedHeaders: ['Content-Type', 'Authorization'],
-    credentials: true,
-  })
-);
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static('public'));
