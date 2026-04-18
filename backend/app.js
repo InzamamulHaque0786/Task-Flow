@@ -12,7 +12,7 @@ const app = express();
 const server = http.createServer(app);
 const io = new Server(server, {
   cors: {
-    origin: process.env.CORS_ORIGIN === '*' ? true : process.env.CORS_ORIGIN,
+    origin: "https://task-flow-sooty-two-36.vercel.app",
     methods: ['GET', 'POST'],
     credentials: true,
   },
@@ -20,7 +20,7 @@ const io = new Server(server, {
 
 app.use(
   cors({
-    origin: process.env.CORS_ORIGIN === '*' ? true : process.env.CORS_ORIGIN,
+    origin: "https://task-flow-sooty-two-36.vercel.app",
     methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
     allowedHeaders: ['Content-Type', 'Authorization'],
     credentials: true,
