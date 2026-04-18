@@ -5,7 +5,7 @@ let socket;
 
 export const initiateSocket = (userId) => {
   if (!socket) {
-    socket = io("https://task-flow-ll0a.onrender.com", {
+    socket = io("https://task-flow-ll0a.onrender.com/api", {
       query: { userId }, 
       withCredentials: true,
       transports: ["websocket", "polling"],
