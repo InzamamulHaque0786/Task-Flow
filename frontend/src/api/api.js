@@ -1,7 +1,8 @@
 import axios from 'axios';
 // Create an instance of axios with the base URL
 const API = axios.create({
-  baseURL: 'http://localhost:4000/api',  // Your backend URL
+  // baseURL:'http://localhost:4000/api',  // Your backend URL
+  baseURL:'https://taskflowbackend-m7a7.onrender.com',  // Your backend URL
 });
 
 // Set the JWT token if available
